@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: apptest_development
+
+test:
+  <<: *default
+  database: apptest_test
+
+production:
+  <<: *default
+  database: apptest_production
+  username: apptest
+  password: <%= ENV['APPTEST_DATABASE_PASSWORD'] %>
