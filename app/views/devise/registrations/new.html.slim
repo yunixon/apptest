@@ -1,0 +1,15 @@
+h2
+  center
+    |Registration
+hr
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :email, required: true, label: 'email', placeholder: 'abc@gmail.com'
+    = f.input :password, required: true, hint: ("#{@minimum_password_length} chars minimum" if @validatable), label: 'Password'
+  .form-actions
+    center
+      = f.button :submit, "Registration", class: 'btn btn-primary'
+      p
+        |or
+      = render "devise/shared/links"

@@ -1,0 +1,14 @@
+nav.navbar.navbar-default role="navigation"
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed data-target="#bs-main" data-toggle="collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href="#" Test App
+    .collapse.navbar-collapse id="bs-example-navbar-collapse-1"
+      ul.nav.navbar-nav.pull-right#login_menu
+        = render 'devise/menu/registration_items'
+        = render 'devise/menu/login_items'
+

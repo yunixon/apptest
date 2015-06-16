@@ -1,0 +1,6 @@
+- if user_signed_in?
+  li= link_to "My account", user_path(current_user)
+  li= link_to "Edit user", edit_user_path(current_user)
+- else
+  li
+    = link_to 'Registration', new_user_registration_path
