@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  #check_authorization
+
   layout :layout_by_resource
 
   def after_sign_in_path_for(resource)
@@ -14,6 +16,10 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     devise_controller? ? 'login' : 'application'
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, alert: exception.message
   end
 
   protected

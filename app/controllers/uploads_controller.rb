@@ -1,5 +1,6 @@
 class UploadsController < ApplicationController
   before_action :set_upload, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource param_method: :upload_params
 
   def show
   end
@@ -49,7 +50,10 @@ class UploadsController < ApplicationController
   private
 
     def set_upload
-      @upload = current_user.uploads.find(params[:id])
+      @upload = Upload.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:notice] = 'Wrong upload'
+      redirect_to current_user
     end
 
     def upload_params

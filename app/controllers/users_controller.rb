@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  load_and_authorize_resource param_method: :user_params
 
   def show
     @upload = Upload.new(user: current_user)
