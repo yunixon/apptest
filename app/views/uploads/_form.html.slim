@@ -1,0 +1,12 @@
+= simple_form_for [current_user, @upload], html: { id: 'upload-form', class: 'dropzone' } do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :title
+    .dropzone-files.dz-default#files data-user="#{current_user.id}"
+      .file data-filename="#{@upload.file}" data-fileurl="#{@upload.file.url}"
+      .dz-message Drop or Click here
+    .fallback
+      = f.file_field :file
+  br
+  .form-actions
+    = f.submit 'Save', id: 'submit-file', class: 'btn btn-primary'

@@ -28,6 +28,8 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
 gem 'simple_form'
+gem 'carrierwave'
+gem 'dropzonejs-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -42,8 +44,9 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers', require: false
   gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'capybara-webkit'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development, :test do

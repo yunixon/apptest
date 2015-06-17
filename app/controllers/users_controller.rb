@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
+    @upload = Upload.new(user: current_user)
+    @uploads = @user.uploads
   end
 
   def edit

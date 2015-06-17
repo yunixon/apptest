@@ -11,8 +11,24 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require dropzone/basic
+ *= require dropzone/dropzone
  *= require_self
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.dropzone {
+  border: 0px;
+}
+
+.dropzone-files{
+  border: 2px dashed #0087F7;
+  border-radius: 5px;
+  padding: 20px 20px;
+}
+
+.red-border {
+  border: 2px dashed #FF0000;
+}

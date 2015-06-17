@@ -1,2 +1,15 @@
 h1 User
 = @user.email
+
+h3 Add file
+== render 'uploads/form'
+
+h3 Files
+- if @uploads.any?
+  - @uploads.in_groups_of(3, false).each do |uploads_array|
+    .row
+      - uploads_array.each do |upload|
+        == render 'uploads/upload', upload: upload
+- else
+  | Nothing
+
