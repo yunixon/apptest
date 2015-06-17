@@ -26,7 +26,11 @@ Dropzone.options.uploadForm =
       e.preventDefault()
       e.stopPropagation()
       if myDropzone.getQueuedFiles().length == 0
-        $('.dropzone-files').addClass('red-border')
+        if $('.dz-preview').length > 0
+          $('#upload-form').submit()
+        else
+          $('.dropzone-files').addClass('red-border')
+        return
       else
         myDropzone.processQueue()
       return

@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     resources :uploads, except: [:index]
   end
+  get '*any', to: 'errors#not_found', via: :all
   root to: 'home#index'
 end

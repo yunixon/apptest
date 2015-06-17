@@ -4,8 +4,10 @@ feature 'User page' do
 
   let(:user) { create(:user) }
   let!(:upload) { create(:upload, user: user) }
+  let!(:tag) { create(:tag) }
 
   before do
+    upload.tags << tag
     login_as(user, scope: :user)
     visit user_path(user)
   end
@@ -41,7 +43,7 @@ feature 'User page' do
     click_button('Save')
 
     expect(page).to have_content(upload.title)
-    expect(page).to have_content(upload.file)
+    expect(page).to have_content(upload.file.file.identifier)
     expect(page).to have_content('TestTitle')
     expect(page).to have_content('test_2.txt')
   end
@@ -58,5 +60,16 @@ feature 'User page' do
     click_button('Save')
     expect(page).to have_css('.alert.alert-danger')
     expect(page).to have_content('Please review the problems below:')
+  end
+
+  scenario 'User can view tags on Upload' do
+    expect(page).to have_content(tag.name)
+  end
+
+  scenario 'User can add tags to Upload' do
+    click_link('Edit')
+    fill_in 'upload[all_tags]', with: 'TestTag1,TestTag2'
+    click_button('Save')
+    expect(page).to have_content('TestTag1, TestTag2')
   end
 end

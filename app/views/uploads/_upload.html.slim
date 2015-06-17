@@ -1,9 +1,14 @@
 .col-md-3.file_block
   p
-    strong Title:
+    strong Title:&nbsp;
     = link_to upload.title, user_upload_path(current_user, upload)
   p
-    strong File:
-    = link_to truncate(upload.file.to_s), upload.file.url
-  p= link_to 'Edit', edit_user_upload_path(current_user, upload)
-  p= link_to 'Destroy', user_upload_path(current_user, upload), data: { confirm: 'Are you sure?' }, method: :delete
+    strong File:&nbsp;
+    = link_to truncate(upload.file.file.identifier), upload.file.url
+  p
+    strong Tags:
+  .tags
+    = raw upload.all_tags
+  hr
+  .col-md-6 = link_to 'Edit', edit_user_upload_path(current_user, upload)
+  .col-md-6 = link_to 'Destroy', user_upload_path(current_user, upload), data: { confirm: 'Are you sure?' }, method: :delete

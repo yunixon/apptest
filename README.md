@@ -1,3 +1,3 @@
 ## apptest
 
-Dont foget to prepare database.yml and secrets.yml
+**Dont forget to prepare database.yml and secrets.yml**
